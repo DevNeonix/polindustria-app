@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@drawable/fondo"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <!-- Imagen de perfil -->
+    <ImageView
+        android:id="@+id/circle_image"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="12dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ico" />
+
+    <!-- Nombre de Usuario -->
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Juana Maria Perez"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#333"
+        android:textStyle="bold" />
+
+    <!-- Correo de la cuenta -->
+    <TextView
+        android:id="@+id/email"
+        style="@style/Widget.AppCompat.Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="juanaperez01@gmail.com"
+        android:textColor="#333"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/mOts" android:title="Listado de OT's"></item>
+        <item android:id="@+id/mPersonal" android:title="Listado de Personal"></item>
+        <item android:id="@+id/mMarcacionOT" android:title="Marcación por Ot"></item>
+        <item android:id="@+id/mMarcacionPe" android:title="Marcacion por Personal"></item>
+        <group>
+            <item android:title="Otras Opciones">
+                <menu>
+                    <item android:id="@+id/mCerrar" android:title="Cerrar Sesion"></item>
+                </menu>
+            </item>
+        </group>
+    </group>
+</menu>
