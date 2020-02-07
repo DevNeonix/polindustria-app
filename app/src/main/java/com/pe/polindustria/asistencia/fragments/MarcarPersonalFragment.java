@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.budiyev.android.codescanner.AutoFocusMode;
@@ -29,6 +30,7 @@ public class MarcarPersonalFragment extends Fragment {
     private View view;
     CodeScannerView scannerView;
     CodeScanner codeScanner;
+    EditText etDni;
 
     public MarcarPersonalFragment() {
         // Required empty public constructor
@@ -50,9 +52,20 @@ public class MarcarPersonalFragment extends Fragment {
         codeScanner.setAutoFocusEnabled(true); // Whether to enable auto focus or not
         codeScanner.setFlashEnabled(false); // Whether to enable flash or not
 
+
+        etDni = view.findViewById(R.id.etDni__fmp);
+
+
         codeScanner.setDecodeCallback(new DecodeCallback() {
             @Override
-            public void onDecoded(@NonNull Result result) {
+            public void onDecoded(@NonNull final Result result) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getActivity(), result.getText(), Toast.LENGTH_SHORT).show();
+                        etDni.setText(result.getText());
+                    }
+                });
 
             }
         });
