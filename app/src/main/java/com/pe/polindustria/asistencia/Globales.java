@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Globales {
 
     public static Retrofit myRetrofit = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.2:8000/")
+            .baseUrl("http://ok.polindustria.com.pe/asistencia/public/")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 

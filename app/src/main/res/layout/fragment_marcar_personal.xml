@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,15 +12,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp">
+
             <EditText
                 android:id="@+id/etDni__fmp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ingrese Nro DNI"/>
+                android:hint="Ingrese Nro DNI"
+                 />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.rilixtech.materialfancybutton.MaterialFancyButton
+            android:id="@+id/btn__fmp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="4dp"
+            android:padding="8dp"
+            fancy:mfb_defaultColor="@color/primary"
+            fancy:mfb_focusColor="@color/primary_dark"
+            fancy:mfb_radius="4sp"
+            fancy:mfb_text="Registrar marca" />
+
         <com.budiyev.android.codescanner.CodeScannerView
             android:id="@+id/scanner_view"
             android:layout_width="match_parent"

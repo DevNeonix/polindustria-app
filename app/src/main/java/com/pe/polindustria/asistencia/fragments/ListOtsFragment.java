@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.pe.polindustria.asistencia.Globales;
@@ -35,7 +36,7 @@ public class ListOtsFragment extends Fragment {
     List<OT> list;
     ListView lv;
     Retrofit retrofit;
-
+    ProgressBar pb_flo;
     public ListOtsFragment() {
         // Required empty public constructor
     }
@@ -47,6 +48,7 @@ public class ListOtsFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_list_ots, container, false);
         lv = view.findViewById(R.id.lv__flo);
+        pb_flo = view.findViewById(R.id.pb_flo);
         retrofit = Globales.myRetrofit;
 
         OtListService service = retrofit.create(OtListService.class);
@@ -56,7 +58,8 @@ public class ListOtsFragment extends Fragment {
 
 
                 OTAdapter adapter = new OTAdapter(response.body().getData(), R.layout.item_ot, getContext());
-
+                pb_flo.setVisibility(View.GONE);
+                lv.setVisibility(View.VISIBLE);
                 lv.setAdapter(adapter);
 
 //

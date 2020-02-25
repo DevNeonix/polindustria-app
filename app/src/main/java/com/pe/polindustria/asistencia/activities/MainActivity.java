@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                             Personal personal = new Gson().fromJson(response.body().getData().toString(), Personal.class);
                             Log.i("User ID", personal.getId() + "");
                             editor.putString("usuario", personal.getId() + "");
+                            editor.putString("usuario_nombre", personal.getNombre() + "");
                             editor.apply();
 
                             goToHome();

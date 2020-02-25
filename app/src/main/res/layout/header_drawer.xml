@@ -28,14 +28,14 @@
         android:textColor="#333"
         android:textStyle="bold" />
 
-    <!-- Correo de la cuenta -->
     <TextView
-        android:id="@+id/email"
-        style="@style/Widget.AppCompat.Spinner"
+        android:id="@+id/toweb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="juanaperez01@gmail.com"
-        android:textColor="#333"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:text="Ir a la Web"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#3f3f3f"
+        android:textStyle="normal"
+        android:textAlignment="textEnd"/>
 
 </LinearLayout>

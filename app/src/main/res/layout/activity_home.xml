@@ -19,6 +19,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/primary"
             app:title="Polindustria"
+            android:elevation="4dp"
             app:titleTextColor="#fff" />
 
         <FrameLayout

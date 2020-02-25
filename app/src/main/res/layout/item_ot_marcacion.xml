@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16sp">
+
+    <TextView
+        android:id="@+id/tvCliente__iot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:paddingTop="12sp"
+        android:text="Nombre del Cliente"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvProducto__iot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:paddingTop="12sp"
+        android:text="Nombre del producto"
+        android:textSize="16sp" />
+
+    <com.rilixtech.materialfancybutton.MaterialFancyButton
+        android:id="@+id/btnVerPersonal__iot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="12dp"
+        android:padding="8sp"
+        android:text="Ver Personal"
+        fancy:mfb_textColor="@color/primary_text"
+        fancy:mfb_defaultColor="@color/primary_light"
+        fancy:mfb_focusColor="@color/primary"
+        fancy:mfb_radius="4sp" />
+</LinearLayout>

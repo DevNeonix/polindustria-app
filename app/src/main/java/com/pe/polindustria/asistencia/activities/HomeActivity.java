@@ -8,15 +8,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.pe.polindustria.asistencia.R;
 import com.pe.polindustria.asistencia.fragments.ListOtsFragment;
-import com.pe.polindustria.asistencia.fragments.ListPersonalFragment;
 import com.pe.polindustria.asistencia.fragments.MarcarOTFragment;
 import com.pe.polindustria.asistencia.fragments.MarcarPersonalFragment;
 
@@ -25,6 +26,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     Toolbar toolbar;
     Fragment currentFragment;
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
 
+        preferences = getApplicationContext().getSharedPreferences("asistencia", MODE_PRIVATE);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = headerView.findViewById(R.id.username);
+        TextView toweb = headerView.findViewById(R.id.toweb);
+        toweb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), WebActivity.class));
+            }
+        });
+        navUsername.setText(preferences.getString("usuario_nombre", "..."));
+
         navigationView.setNavigationItemSelectedListener(this);
 
     }
@@ -59,10 +73,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 currentFragment = new ListOtsFragment();
                 changeFrame(currentFragment);
                 break;
-            case R.id.mPersonal:
-                currentFragment = new ListPersonalFragment();
-                changeFrame(currentFragment);
-                break;
+
             case R.id.mMarcacionOT:
                 currentFragment = new MarcarOTFragment();
                 changeFrame(currentFragment);
@@ -70,6 +81,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.mMarcacionPe:
                 currentFragment = new MarcarPersonalFragment();
                 changeFrame(currentFragment);
+                break;
+            case R.id.mCerrar:
+                SharedPreferences.Editor editor = preferences.edit();
+
+                editor.remove("usuario");
+                editor.remove("usuario_nombre");
+                editor.apply();
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
                 break;
             default:
                 currentFragment = new MarcarPersonalFragment();

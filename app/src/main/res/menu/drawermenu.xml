@@ -2,7 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item android:id="@+id/mOts" android:title="Listado de OT's"></item>
-        <item android:id="@+id/mPersonal" android:title="Listado de Personal"></item>
         <item android:id="@+id/mMarcacionOT" android:title="Marcación por Ot"></item>
         <item android:id="@+id/mMarcacionPe" android:title="Marcacion por Personal"></item>
         <group>
