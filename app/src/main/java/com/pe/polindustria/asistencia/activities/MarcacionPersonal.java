@@ -20,6 +20,8 @@ import com.pe.polindustria.asistencia.models.ViewPersonalOT;
 import com.pe.polindustria.asistencia.services.EnviaAsistenciaService;
 import com.pe.polindustria.asistencia.services.Ot2ListService;
 
+import org.json.JSONObject;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -46,14 +48,21 @@ public class MarcacionPersonal extends AppCompatActivity {
             @Override
             public void onResponse(Call<Response<List<ViewPersonalOT>>> call, retrofit2.Response<Response<List<ViewPersonalOT>>> response) {
 
-                adapter2 = new OTAdapter2(response.body().getData(), R.layout.item_ot2, getApplicationContext(), new OTAdapter2.onClickAsistencia() {
-                    @Override
-                    public void enviaAsistencia(ViewPersonalOT ot, View view) {
-                        enviaAsistenciaHttp(ot, view);
-                    }
-                });
 
-                lv.setAdapter(adapter2);
+                if (response.body().getMessage().equals("")){
+                    adapter2 = new OTAdapter2(response.body().getData(), R.layout.item_ot2, getApplicationContext(), new OTAdapter2.onClickAsistencia() {
+                        @Override
+                        public void enviaAsistencia(ViewPersonalOT ot, View view) {
+                            enviaAsistenciaHttp(ot, view);
+                        }
+                    });
+
+                    lv.setAdapter(adapter2);
+                }else{
+                    Globales.customMessageDialog(MarcacionPersonal.this, "", response.body().getMessage()).show();
+                }
+
+
             }
 
             @Override
@@ -98,16 +107,16 @@ public class MarcacionPersonal extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         final AlertDialog dialog = Globales.customDialog(MarcacionPersonal.this, R.layout.success_layout, view).create();
                         dialog.show();
-                        TextView tv=dialog.findViewById(R.id.tvMessage__success_layout);
+                        TextView tv = dialog.findViewById(R.id.tvMessage__success_layout);
                         tv.setText(response.body().getMessage());
                         dialog.findViewById(R.id.btnaceptar__success_layout).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
 
-                                if (response.body().getMessage().contains("No puede generarse")){
+                                if (response.body().getMessage().contains("No puede generarse")) {
 
-                                }else{
+                                } else {
                                     MarcacionPersonal.super.onBackPressed();
                                 }
                                 dialog.dismiss();

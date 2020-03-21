@@ -10,7 +10,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Globales {
-
+    int icon = android.R.drawable.ic_dialog_alert;
     public static Retrofit myRetrofit = new Retrofit.Builder()
             .baseUrl("http://ok.polindustria.com.pe/asistencia/public/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -23,4 +23,24 @@ public class Globales {
         builder.setView(dialogView);
         return builder;
     }
+
+    public static AlertDialog.Builder customMessageDialog(Context context, String title, String message) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context)
+                .setTitle(title)
+                .setMessage(message)
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert);
+        return builder;
+    }
+    public static AlertDialog.Builder customMessageDialog(Context context, String title, String message,int icon) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context)
+                .setTitle(title)
+                .setMessage(message)
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(icon);
+        return builder;
+    }
+
 }
