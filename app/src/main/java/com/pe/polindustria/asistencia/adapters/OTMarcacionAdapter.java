@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,6 +64,8 @@ public class OTMarcacionAdapter extends BaseAdapter {
 
         TextView tvCliente = convertView.findViewById(R.id.tvCliente__iot);
         TextView tvProducto = convertView.findViewById(R.id.tvProducto__iot);
+
+
         MaterialFancyButton button = convertView.findViewById(R.id.btnVerPersonal__iot);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

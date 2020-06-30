@@ -6,8 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pe.polindustria.asistencia.Globales;
 import com.pe.polindustria.asistencia.R;
@@ -66,6 +68,17 @@ public class OTAdapter2 extends BaseAdapter {
         MaterialFancyButton button = convertView.findViewById(R.id.btnVerPersonal__iot);
         tvCliente.setText(ot.getCliente());
         tvProducto.setText(ot.getProducto_fabricar());
+
+        LinearLayout llProducto = convertView.findViewById(R.id.llProducto__iot);
+        final CheckBox chkProducto = convertView.findViewById(R.id.chkProducto__iot);
+
+        llProducto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Toast.makeText(context, chkProducto.isChecked()+"", Toast.LENGTH_SHORT).show();
+                chkProducto.setChecked(!chkProducto.isChecked());
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

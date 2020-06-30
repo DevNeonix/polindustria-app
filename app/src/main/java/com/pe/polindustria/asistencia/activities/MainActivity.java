@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -74,19 +75,19 @@ public class MainActivity extends AppCompatActivity {
                 String u = etUsuario.getText().toString();
                 String p = etPassword.getText().toString();
 
-                loginService.login(new Login(u, p)).enqueue(new Callback<Response>() {
+                loginService.login(new Login(u, p)).enqueue(new Callback<Response<Personal>>() {
                     @Override
-                    public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                    public void onResponse(Call<Response<Personal>> call, retrofit2.Response<Response<Personal>> response) {
                         if (response.isSuccessful()) {
                             Toast.makeText(MainActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
 
                             SharedPreferences.Editor editor = preferences.edit();
 
-                            Personal personal = new Gson().fromJson(response.body().getData().toString(), Personal.class);
+                            Personal personal = response.body().getData();
                             Log.i("User ID", personal.getId() + "");
                             editor.putString("usuario", personal.getId() + "");
-                            editor.putString("usuario_nombre", personal.getNombre() + "");
+                            editor.putString("usuario_nombre", personal.getNombres() + "");
                             editor.apply();
 
                             goToHome();
@@ -94,13 +95,11 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             Toast.makeText(MainActivity.this, "Usuario o contraseña errada", Toast.LENGTH_SHORT).show();
                         }
-
-
                     }
 
                     @Override
-                    public void onFailure(Call<Response> call, Throwable t) {
-                        Toast.makeText(MainActivity.this, "No se pudo establecer conexion con el servidor", Toast.LENGTH_SHORT).show();
+                    public void onFailure(Call<Response<Personal>> call, Throwable t) {
+                        Toast.makeText(MainActivity.this, "Tenemos problemas al conectarnos con el servidor.", Toast.LENGTH_SHORT).show();
                     }
                 });
 

@@ -11,68 +11,76 @@
     tools:context=".activities.MainActivity">
 
 
-    <androidx.cardview.widget.CardView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8sp"
-        card_view:cardBackgroundColor="#f6f6f6"
-        card_view:cardCornerRadius="10dp"
-        card_view:cardElevation="5dp"
-        card_view:cardUseCompatPadding="true">
+        android:layout_height="wrap_content">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <ImageView
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:src="@drawable/ico" />
+            <TextView
+                style="@style/TextAppearance.AppCompat.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_marginTop="16sp"
+                android:text="Iniciar sesión" />
 
-                <ImageView
+            <TextView
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:text="Llene los siguientes datos para acceder." />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/MyTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <EditText
+                    android:id="@+id/etUsuario__am"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16sp"
-                    android:src="@drawable/ico" />
+                    android:hint="Usuario" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/MyTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:passwordToggleEnabled="true"
+                android:layout_marginBottom="16sp">
 
-                    <EditText
-                        android:id="@+id/etUsuario__am"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Usuario" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:passwordToggleEnabled="true">
-
-                    <EditText
-                        android:id="@+id/etPassword__am"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:hint="Contraseña" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.rilixtech.materialfancybutton.MaterialFancyButton
-                    android:id="@+id/btnIngresar__am"
+                <EditText
+                    android:id="@+id/etPassword__am"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8sp"
-                    android:padding="12dp"
-                    fancy:mfb_defaultColor="@color/primary"
-                    fancy:mfb_focusColor="@color/primary_dark"
-                    fancy:mfb_radius="8sp"
-                    fancy:mfb_text="Ingresar" />
-            </LinearLayout>
-        </ScrollView>
-    </androidx.cardview.widget.CardView>
+                    android:hint="Contraseña"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.rilixtech.materialfancybutton.MaterialFancyButton
+                android:id="@+id/btnIngresar__am"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8sp"
+                app:mfb_radius="2sp"
+
+                app:mfb_defaultColor="@color/icons"
+                app:mfb_borderWidth="1sp"
+                android:text="Ingresar"
+                app:mfb_textColor="@color/primary"
+                app:mfb_borderColor="@color/primary"
+                app:mfb_focusColor="@color/primary_dark" />
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>

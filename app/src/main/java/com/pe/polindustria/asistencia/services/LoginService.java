@@ -1,6 +1,7 @@
 package com.pe.polindustria.asistencia.services;
 
 import com.pe.polindustria.asistencia.models.LoginResponse;
+import com.pe.polindustria.asistencia.models.Personal;
 import com.pe.polindustria.asistencia.models.Response;
 import com.pe.polindustria.asistencia.models.Login;
 
@@ -10,5 +11,5 @@ import retrofit2.http.POST;
 
 public interface LoginService {
     @POST("api/login")
-    Call<Response> login(@Body Login login);
+    Call<Response<Personal>> login(@Body Login login);
 }

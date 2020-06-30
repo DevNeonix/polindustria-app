@@ -2,15 +2,17 @@ package com.pe.polindustria.asistencia.models;
 
 public class Personal {
     int id;
-    String nombre;
+    String nombres;
+    String apellidos;
     String doc_ide;
-    int tipo;
+    String tipo;
     String usuario;
     String clave;
 
-    public Personal(int id, String nombre, String doc_ide, int tipo, String usuario, String clave) {
+    public Personal(int id, String nombres, String apellidos, String doc_ide, String tipo, String usuario, String clave) {
         this.id = id;
-        this.nombre = nombre;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
         this.doc_ide = doc_ide;
         this.tipo = tipo;
         this.usuario = usuario;
@@ -25,12 +27,20 @@ public class Personal {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombres() {
+        return nombres;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getDoc_ide() {
@@ -41,11 +51,11 @@ public class Personal {
         this.doc_ide = doc_ide;
     }
 
-    public int getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(int tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 

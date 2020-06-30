@@ -25,6 +25,33 @@
         android:textColor="@color/secondary_text"
         android:text="Nombre del producto"
         android:textSize="16sp" />
+    <LinearLayout
+        android:id="@+id/llProducto__iot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/chkProducto__iot"
+            android:layout_width="wrap_content"
+            android:buttonTint="@color/secondary_text"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/secondary_text"
+            android:text="Tiene viáticos" android:gravity="center"></TextView>
+    </LinearLayout>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:hint="Observaciones"
+            android:height="150sp"
+            android:textColor="@color/secondary_text"
+            android:textColorHint="@color/secondary_text"
+            android:inputType="text|textMultiLine"/>
 
     <com.rilixtech.materialfancybutton.MaterialFancyButton
         android:id="@+id/btnVerPersonal__iot"
