@@ -43,15 +43,15 @@
     </LinearLayout>
 
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="top"
-            android:hint="Observaciones"
-            android:height="150sp"
-            android:textColor="@color/secondary_text"
-            android:textColorHint="@color/secondary_text"
-            android:inputType="text|textMultiLine"/>
+    <EditText
+        android:id="@+id/etProducto_iot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:hint="Observaciones"
+        android:inputType="text"
+        android:textColor="@color/secondary_text"
+        android:textColorHint="@color/secondary_text" />
 
     <com.rilixtech.materialfancybutton.MaterialFancyButton
         android:id="@+id/btnVerPersonal__iot"

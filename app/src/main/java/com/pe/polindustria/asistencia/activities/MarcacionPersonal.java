@@ -22,7 +22,9 @@ import com.pe.polindustria.asistencia.services.Ot2ListService;
 
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,16 +51,16 @@ public class MarcacionPersonal extends AppCompatActivity {
             public void onResponse(Call<Response<List<ViewPersonalOT>>> call, retrofit2.Response<Response<List<ViewPersonalOT>>> response) {
 
 
-                if (response.body().getMessage().equals("")){
+                if (response.body().getMessage().equals("")) {
                     adapter2 = new OTAdapter2(response.body().getData(), R.layout.item_ot2, getApplicationContext(), new OTAdapter2.onClickAsistencia() {
                         @Override
-                        public void enviaAsistencia(ViewPersonalOT ot, View view) {
-                            enviaAsistenciaHttp(ot, view);
+                        public void enviaAsistencia(ViewPersonalOT ot, View view, Boolean viatico, String Obs) {
+                            enviaAsistenciaHttp(ot, view, viatico, Obs);
                         }
                     });
 
                     lv.setAdapter(adapter2);
-                }else{
+                } else {
                     Globales.customMessageDialog(MarcacionPersonal.this, "", response.body().getMessage()).show();
                 }
 
@@ -93,13 +95,13 @@ public class MarcacionPersonal extends AppCompatActivity {
 
     }
 
-    public void enviaAsistenciaHttp(ViewPersonalOT ot, final View view) {
+    public void enviaAsistenciaHttp(ViewPersonalOT ot, final View view, Boolean viatico, String obs) {
         Toast.makeText(getApplicationContext(), "Enviando asistencia.", Toast.LENGTH_SHORT).show();
 
         EnviaAsistenciaService service = retrofit.create(EnviaAsistenciaService.class);
 
 
-        service.enviaAsistencia(ot.getId_personal() + "", ot.getId_ot() + "", preferences.getString("usuario", "0") + "")
+        service.enviaAsistencia(ot.getId_personal() + "", ot.getId_ot() + "", preferences.getString("usuario", "0") + "", viatico + "", obs)
                 .enqueue(new Callback<Response<List<String>>>() {
                     @Override
                     public void onResponse(Call<Response<List<String>>> call, final retrofit2.Response<Response<List<String>>> response) {

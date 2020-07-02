@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,6 +66,7 @@ public class OTAdapter2 extends BaseAdapter {
 
         TextView tvCliente = convertView.findViewById(R.id.tvCliente__iot);
         TextView tvProducto = convertView.findViewById(R.id.tvProducto__iot);
+        final EditText etProducto = convertView.findViewById(R.id.etProducto_iot);
         MaterialFancyButton button = convertView.findViewById(R.id.btnVerPersonal__iot);
         tvCliente.setText(ot.getCliente());
         tvProducto.setText(ot.getProducto_fabricar());
@@ -83,7 +85,7 @@ public class OTAdapter2 extends BaseAdapter {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickAsistencia.enviaAsistencia(ot,v);
+                onClickAsistencia.enviaAsistencia(ot, v, chkProducto.isChecked(), etProducto.getText().toString());
             }
         });
 
@@ -91,7 +93,7 @@ public class OTAdapter2 extends BaseAdapter {
     }
 
     public interface onClickAsistencia {
-        void enviaAsistencia(ViewPersonalOT ot, View view);
+        void enviaAsistencia(ViewPersonalOT ot, View view,Boolean viatico,String Obs);
     }
 
 }
