@@ -7,11 +7,14 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.pe.polindustria.asistencia.Globales;
 import com.pe.polindustria.asistencia.R;
 import com.pe.polindustria.asistencia.adapters.OTAdapter2;
@@ -19,6 +22,7 @@ import com.pe.polindustria.asistencia.models.Response;
 import com.pe.polindustria.asistencia.models.ViewPersonalOT;
 import com.pe.polindustria.asistencia.services.EnviaAsistenciaService;
 import com.pe.polindustria.asistencia.services.Ot2ListService;
+import com.rilixtech.materialfancybutton.MaterialFancyButton;
 
 import org.json.JSONObject;
 
@@ -56,6 +60,36 @@ public class MarcacionPersonal extends AppCompatActivity {
                         @Override
                         public void enviaAsistencia(ViewPersonalOT ot, View view, Boolean viatico, String Obs) {
                             enviaAsistenciaHttp(ot, view, viatico, Obs);
+                        }
+
+                        @Override
+                        public void addObservaciones(final TextView et) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(MarcacionPersonal.this);
+                            builder.setTitle("Ingrese las observaciones");
+                            // set the custom layout
+                            final View customLayout = getLayoutInflater().inflate(R.layout.dialog_edittext, null);
+                            builder.setView(customLayout);
+
+                            final EditText e = customLayout.findViewById(R.id.etAgregarObservaciones);
+                            MaterialFancyButton b = customLayout.findViewById(R.id.btnGuardarObservaciones);
+                            final AlertDialog dialog = builder.create();
+                            dialog.show();
+                            b.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    if (e.getText().equals("")){
+                                        et.setText("Observaciones");
+                                    }else{
+                                        et.setText(e.getText());
+                                    }
+                                    dialog.dismiss();
+                                }
+                            });
+
+
+
+
+
                         }
                     });
 

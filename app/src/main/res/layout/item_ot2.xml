@@ -43,13 +43,13 @@
     </LinearLayout>
 
 
-    <EditText
+    <TextView
         android:id="@+id/etProducto_iot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="top"
-        android:hint="Observaciones"
-        android:inputType="text"
+        android:text="Observaciones"
+        android:paddingTop="8sp"
         android:textColor="@color/secondary_text"
         android:textColorHint="@color/secondary_text" />
 

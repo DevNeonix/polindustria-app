@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textfield.TextInputEditText;
 import com.pe.polindustria.asistencia.Globales;
 import com.pe.polindustria.asistencia.R;
 import com.pe.polindustria.asistencia.models.OT;
@@ -33,6 +35,7 @@ public class OTAdapter2 extends BaseAdapter {
     int layout;
     Context context;
     onClickAsistencia onClickAsistencia;
+
 
     public OTAdapter2(List<ViewPersonalOT> list, int layout, Context context, OTAdapter2.onClickAsistencia onClickAsistencia) {
         this.list = list;
@@ -66,7 +69,7 @@ public class OTAdapter2 extends BaseAdapter {
 
         TextView tvCliente = convertView.findViewById(R.id.tvCliente__iot);
         TextView tvProducto = convertView.findViewById(R.id.tvProducto__iot);
-        final EditText etProducto = convertView.findViewById(R.id.etProducto_iot);
+        final TextView etProducto = convertView.findViewById(R.id.etProducto_iot);
         MaterialFancyButton button = convertView.findViewById(R.id.btnVerPersonal__iot);
         tvCliente.setText(ot.getCliente());
         tvProducto.setText(ot.getProducto_fabricar());
@@ -81,6 +84,13 @@ public class OTAdapter2 extends BaseAdapter {
                 chkProducto.setChecked(!chkProducto.isChecked());
             }
         });
+//        etProducto.set(false);
+        etProducto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickAsistencia.addObservaciones(etProducto);
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +103,9 @@ public class OTAdapter2 extends BaseAdapter {
     }
 
     public interface onClickAsistencia {
-        void enviaAsistencia(ViewPersonalOT ot, View view,Boolean viatico,String Obs);
+        void enviaAsistencia(ViewPersonalOT ot, View view, Boolean viatico, String Obs);
+
+        void addObservaciones(TextView et);
     }
 
 }

@@ -24,6 +24,7 @@ import com.pe.polindustria.asistencia.models.LoginResponse;
 import com.pe.polindustria.asistencia.models.Login;
 import com.pe.polindustria.asistencia.models.Personal;
 import com.pe.polindustria.asistencia.models.Response;
+import com.pe.polindustria.asistencia.models.User;
 import com.pe.polindustria.asistencia.services.LoginService;
 import com.rilixtech.materialfancybutton.MaterialFancyButton;
 
@@ -75,19 +76,19 @@ public class MainActivity extends AppCompatActivity {
                 String u = etUsuario.getText().toString();
                 String p = etPassword.getText().toString();
 
-                loginService.login(new Login(u, p)).enqueue(new Callback<Response<Personal>>() {
+                loginService.login(new Login(u, p)).enqueue(new Callback<Response<User>>() {
                     @Override
-                    public void onResponse(Call<Response<Personal>> call, retrofit2.Response<Response<Personal>> response) {
+                    public void onResponse(Call<Response<User>> call, retrofit2.Response<Response<User>> response) {
                         if (response.isSuccessful()) {
                             Toast.makeText(MainActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
 
                             SharedPreferences.Editor editor = preferences.edit();
 
-                            Personal personal = response.body().getData();
+                            User personal = response.body().getData();
                             Log.i("User ID", personal.getId() + "");
                             editor.putString("usuario", personal.getId() + "");
-                            editor.putString("usuario_nombre", personal.getNombres() + "");
+                            editor.putString("usuario_nombre", personal.getName() + "");
                             editor.apply();
 
                             goToHome();
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<Response<Personal>> call, Throwable t) {
+                    public void onFailure(Call<Response<User>> call, Throwable t) {
                         Toast.makeText(MainActivity.this, "Tenemos problemas al conectarnos con el servidor.", Toast.LENGTH_SHORT).show();
                     }
                 });
